@@ -10,12 +10,18 @@ let version = "20131101";
 const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-button");
 
-searchButton.addEventListener("click", () => {
+searchButton.addEventListener("click", async () => {
+  const items = await getResult();
+  console.log(items);
+});
+
+function getResult() {
   query = searchInput.value;
   const url = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=${key}&Query=${query}&QueryType=${queryType}&MaxResults=${maxResults}&start=${start}&SearchTarget=${searchTarget}&output=${output}&Version=${version}`;
-  fetch(url)
-    .then((res) => console.log(res.json()))
-    .catch((error) => {
-      console.log(error);
+  const items = fetch(url)
+    .then((res) => res.json())
+    .then((res) => {
+      return res.item;
     });
-});
+  return items;
+}
