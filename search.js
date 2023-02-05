@@ -9,10 +9,11 @@ let version = "20131101";
 
 const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-button");
+const resultTable = document.querySelector(".result-table");
 
 searchButton.addEventListener("click", async () => {
   const items = await getResult();
-  console.log(items);
+  renderItems(items);
 });
 
 function getResult() {
@@ -24,4 +25,24 @@ function getResult() {
       return res.item;
     });
   return items;
+}
+
+function renderItems(items) {
+  let html = `<tr>
+    <th>제목</th>
+    <th>저자</th>
+    <th>ISBN</th>
+  </tr>`;
+
+  items.forEach((item) => {
+    const tmp = `<tr>
+    <td>${item.title}</td>
+    <td>${item.author}</td>
+    <td>${item.isbn13}</td>
+    <td><button>추가</button></td>
+  </tr>`;
+    html = html + tmp;
+  });
+
+  resultTable.innerHTML = html;
 }

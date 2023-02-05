@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="search.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div>
@@ -15,21 +16,17 @@
         <button class="search-button">검색</button>
       </div>
       <div>
+        <h2>검색결과</h2>
         <table>
           <thead></thead>
-          <tbody>
-            <tr>
-              <th>제목</th>
-              <th>저자</th>
-              <th>ISBN</th>
-            </tr>
-            <tr>
-              <td>디즈니 알라딘 - 파 프롬 아그라바</td>
-              <td>아이샤 사이드 (지은이), 김미선 (옮긴이)</td>
-              <td>K822636271</td>
-              <td><button>추가</button></td>
-            </tr>
-          </tbody>
+          <tbody class="result-table"></tbody>
+        </table>
+      </div>
+      <div>
+        <h2>위시리스트</h2>
+        <table>
+          <thead></thead>
+          <tbody class="wish-table"></tbody>
         </table>
       </div>
     </div>
